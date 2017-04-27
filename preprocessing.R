@@ -27,7 +27,7 @@ get_frames <- function(root_path){
 
 write_label_csv <- function(fname, frames, label_map_file = NULL) {
   
-  index <- sapply(frames, function(x) sapply(str_split(x, "/"), `[`, 3)) %>>% as.integer
+  index <- sapply(frames, function(x) sapply(str_split(x, "/"), `[[`, 3)) %>>% as.integer
   if (is.null(label_map_file)) {
     fwrite(data.table(index, 0, 0), fname, col.names = FALSE)
   } else {
